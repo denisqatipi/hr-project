@@ -19,8 +19,19 @@
               <h3 class="card-title">KARTELE PUNONJESI</h3>
             </div>
             <div class="col-1 d-flex justify-content-between">
-              <svg width="32px" height="32px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m16.293 17.707 1.414-1.414L13.414 12l4.293-4.293-1.414-1.414L10.586 12zM7 6h2v12H7z"/></svg>
-              <svg style="margin-top: 6px" width="18px" height="18px" viewBox="0 0 52 52" data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"><g data-name="Group 132" id="Group_132"><path d="M38,52a2,2,0,0,1-1.41-.59l-24-24a2,2,0,0,1,0-2.82l24-24a2,2,0,0,1,2.82,0,2,2,0,0,1,0,2.82L16.83,26,39.41,48.59A2,2,0,0,1,38,52Z"/></g></svg>
+              <a href="/employee/{{ App\Employee::first()->id }}/show">
+                <svg width="32px" height="32px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="m16.293 17.707 1.414-1.414L13.414 12l4.293-4.293-1.414-1.414L10.586 12zM7 6h2v12H7z"/>
+                </svg>
+              </a>
+              <a href="/employee/{{ Request::segment(2) }}/show">
+                <svg style="margin-top: 6px" width="18px" height="18px" viewBox="0 0 52 52" data-name="Layer 1"
+                     id="Layer_1" xmlns="http://www.w3.org/2000/svg">
+                  <g data-name="Group 132" id="Group_132">
+                    <path d="M38,52a2,2,0,0,1-1.41-.59l-24-24a2,2,0,0,1,0-2.82l24-24a2,2,0,0,1,2.82,0,2,2,0,0,1,0,2.82L16.83,26,39.41,48.59A2,2,0,0,1,38,52Z"/>
+                  </g>
+                </svg>
+              </a>
             </div>
             <div class="col-1 d-flex justify-content-between">
               <svg style="margin-top: 6px" width="18px" height="18px" viewBox="0 0 52 52" data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"><g data-name="Group 132" id="Group_132"><path d="M14,52a2,2,0,0,1-1.41-3.41L35.17,26,12.59,3.41a2,2,0,0,1,0-2.82,2,2,0,0,1,2.82,0l24,24a2,2,0,0,1,0,2.82l-24,24A2,2,0,0,1,14,52Z"/></g></svg>
