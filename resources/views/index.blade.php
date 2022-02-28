@@ -44,8 +44,8 @@
                                 <tr>
                                     <td style="width: 7%">{{ $employee->id }}</td>
                                     <td style="width: 20%">{{ $employee->name . ' ' . $employee->surname }}</td>
-                                    <td style="width: 20%">{{ $employee->currentMovement->position->description }}</td>
-                                    <td style="width: 20%">{{ $employee->currentMovement->department->description }}</td>
+                                    <td style="width: 20%">{{ $employee->currentMovement ? $employee->currentMovement->position->description : '' }}</td>
+                                    <td style="width: 20%">{{ $employee->currentMovement ? $employee->currentMovement->department->description : ''}}</td>
                                     <td style="width: 15%">
                                         <a class="btn btn-dark btn-sm" href="{{ route('show', $employee->id) }}">Shiko</a>
                                         <a class="btn btn-dark btn-sm" href="{{ route('edit', $employee->id) }}">Modifiko</a>

@@ -75,7 +75,7 @@
                                         <label for="position">Pozicioni</label>
                                         <select class="form-control" id="position" name="position">
                                             @foreach($positions as $position)
-                                                <option value="{{ $position->id }}" {{ $position->id != $employee->currentMovement->position->id ?: 'selected' }}>{{ $position->description }}</option>
+                                                <option value="{{ $position->id }}" {{ $employee->currentMovement ? $position->id != $employee->currentMovement->position->id ?: 'selected' : '' }}>{{ $position->description }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -83,7 +83,7 @@
                                         <label for="department">Departamenti</label>
                                         <select class="form-control" id="department" name="department">
                                             @foreach($departments as $department)
-                                                <option value="{{ $department->id }}" {{ $department->id != $employee->currentMovement->department_id ?: 'selected' }}>{{ $department->description }}</option>
+                                                <option value="{{ $department->id }}" {{ $employee->currentMovement ? $department->id != $employee->currentMovement->department_id ?: 'selected' : '' }}>{{ $department->description }}</option>
                                             @endforeach
                                         </select>
                                     </div>

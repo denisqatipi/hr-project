@@ -24,3 +24,5 @@ Route::get('/employee/{id}/edit', 'HomeController@edit')->name('edit'); //edit e
 Route::post('/employee/store', 'HomeController@store')->name('store'); //store employee
 Route::put('/employee/{id}/update', 'HomeController@update')->name('update'); //update employee
 Route::delete('/employee/{id}/delete', 'HomeController@delete')->name('delete'); //delete employee
+
+Route::post('/employee-movement/store', 'EmployeeMovementController@store')->name('store-movement');

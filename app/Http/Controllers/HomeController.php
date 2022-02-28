@@ -59,7 +59,28 @@ class HomeController extends Controller
         $employee = Employee::find($id);
 
         if ($employee) {
-            return view('blank', ['employee' => $employee, 'movements' => $employee->movements]);
+            // get previous user id
+            $previous = Employee::where('id', '<', $id)->max('id');
+
+            if (!$previous) {
+                $previous = Employee::first()->id;
+            }
+
+            // get next user id
+            $next = Employee::where('id', '>', $id)->min('id');
+
+            if (!$next) {
+                $next = Employee::latest()->first()->id;
+            }
+
+            return view('blank', [
+                'employee' => $employee,
+                'movements' => $employee->movements,
+                'previous' => $previous,
+                'next' => $next,
+                'positions' => Position::all(),
+                'departments' => Department::all()
+            ]);
         } else {
             abort(404);
         }
