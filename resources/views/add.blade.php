@@ -29,49 +29,50 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-12">
-                        <form>
+                        <form method="POST" action="{{ route('store') }}">
+                            <input name="_token" type="hidden" value="{{ csrf_token() }}">
                             <div class="row">
                                 <div class="col-3">
                                     <div class="form-group">
                                         <label for="name">Emri</label>
-                                        <input type="text" class="form-control" id="name">
+                                        <input type="text" class="form-control" id="name" name="name">
                                     </div>
                                     <div class="form-group">
                                         <label for="gender">Gjinia</label>
-                                        <input type="text" class="form-control" id="gender">
+                                        <input type="text" class="form-control" id="gender" name="gender">
                                     </div>
                                     <div class="form-group">
                                         <label for="birthday">Datelindja</label>
-                                        <input type="text" class="form-control" id="birthday">
+                                        <input type="text" class="form-control" id="birthday" name="birthday">
                                     </div>
                                     <div class="form-group">
                                         <label for="address">Adresa</label>
-                                        <input type="text" class="form-control" id="address">
+                                        <input type="text" class="form-control" id="address" name="address">
                                     </div>
 
                                 </div>
                                 <div class="offset-1 col-3">
                                     <div class="form-group">
                                         <label for="surname">Mbiemer</label>
-                                        <input type="text" class="form-control" id="surname">
+                                        <input type="text" class="form-control" id="surname" name="surname">
                                     </div>
                                     <div class="form-group">
                                         <label for="insurance">Karta Identitetit</label>
-                                        <input type="text" class="form-control" id="insurance">
+                                        <input type="text" class="form-control" id="insurance" name="insurance">
                                     </div>
                                     <div class="form-group">
                                         <label for="phone">Nr Telefoni</label>
-                                        <input type="text" class="form-control" id="phone">
+                                        <input type="text" class="form-control" id="phone" name="phone">
                                     </div>
                                     <div class="form-group">
                                         <label for="email">Email</label>
-                                        <input type="email" class="form-control" id="email">
+                                        <input type="email" class="form-control" id="email" name="email">
                                     </div>
                                 </div>
                                 <div class="offset-1 col-3">
                                     <div class="form-group">
                                         <label for="position">Pozicioni</label>
-                                        <select class="form-control" id="position">
+                                        <select class="form-control" id="position" name="position">
                                             @foreach($positions as $position)
                                             <option value="{{ $position->id }}">{{ $position->description }}</option>
                                             @endforeach
@@ -79,7 +80,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="department">Departamenti</label>
-                                        <select class="form-control" id="department">
+                                        <select class="form-control" id="department" name="department">
                                             @foreach($departments as $department)
                                             <option value="{{ $department->id }}">{{ $department->description }}</option>
                                             @endforeach

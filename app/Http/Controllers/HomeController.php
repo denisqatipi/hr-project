@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Department;
 use App\Employee;
+use App\EmployeeMovement;
 use App\Level;
 use App\Position;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -61,5 +63,90 @@ class HomeController extends Controller
         } else {
             abort(404);
         }
+    }
+
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required',
+            'gender' => 'required',
+            'birthday' => 'required',
+            'address' => 'required',
+            'surname' => 'required',
+            'insurance' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+            'position' => 'required',
+            'department' => 'required'
+        ]);
+
+        $employee = Employee::create([
+            'name' => $request->name,
+            'surname' => $request->surname,
+            'gender' => $request->gender,
+            'insurance_id' => $request->insurance,
+            'birthdate' => $request->birthday,
+            'mobile' => $request->phone,
+            'address' => $request->address,
+            'email' => $request->email,
+            'active' => true
+        ]);
+
+        if ($employee) {
+            $position = Position::find($request->position);
+
+            EmployeeMovement::create([
+                'hr_employee_id' => $employee->id,
+                'start_work' => Carbon::now()->toDate(),
+                'end_work' => null,
+                'position_id' => $request->position,
+                'department_id' => $request->department,
+                'note' => '',
+                'hr_jp_level_id' => $position->level->id
+            ]);
+
+            return redirect()->route('index')->with('success');
+
+        }
+    }
+
+    public function update(Request $request, $id)
+    {
+        $employee = Employee::find($id);
+
+        $this->validate($request, [
+            'name' => 'required',
+            'gender' => 'required',
+            'birthday' => 'required',
+            'address' => 'required',
+            'surname' => 'required',
+            'insurance' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+            'position' => 'required',
+            'department' => 'required'
+        ]);
+
+        $employee->name = $request->name ?: $employee->name;
+        $employee->surname = $request->surname ?: $employee->surname;
+        $employee->gender = $request->gender ?: $employee->gender;
+        $employee->insurance_id = $request->insurance ?: $employee->insurance_id;
+        $employee->birthdate = $request->birthday ?: $employee->birthdate;
+        $employee->mobile = $request->phone ?: $employee->mobile;
+        $employee->address = $request->address ?: $employee->address;
+        $employee->email = $request->email ?: $employee->email;
+
+        $employee->save();
+
+        return redirect()->back();
+    }
+
+    public function delete($id)
+    {
+        $employee = Employee::find($id);
+
+        $employee->delete();
+
+        return redirect()->route('index');
     }
 }

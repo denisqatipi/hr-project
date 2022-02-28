@@ -29,49 +29,51 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-12">
-                        <form>
+                        <form action="/employee/{{ $employee->id }}/update" method="POST">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            {{ method_field('PUT') }}
                             <div class="row">
                                 <div class="col-3">
                                     <div class="form-group">
                                         <label for="name">Emri</label>
-                                        <input type="text" class="form-control" id="name" value="{{ $employee->name }}">
+                                        <input type="text" class="form-control" id="name" value="{{ $employee->name }}" name="name">
                                     </div>
                                     <div class="form-group">
                                         <label for="gender">Gjinia</label>
-                                        <input type="text" class="form-control" id="gender" value="{{ $employee->gender }}">
+                                        <input type="text" class="form-control" id="gender" value="{{ $employee->gender }}" name="gender">
                                     </div>
                                     <div class="form-group">
                                         <label for="birthday">Datelindja</label>
-                                        <input type="text" class="form-control" id="birthday" value="{{ $employee->birthdate }}">
+                                        <input type="text" class="form-control" id="birthday" value="{{ $employee->birthdate }}" name="birthday">
                                     </div>
                                     <div class="form-group">
                                         <label for="address">Adresa</label>
-                                        <input type="text" class="form-control" id="address" value="{{ $employee->address }}">
+                                        <input type="text" class="form-control" id="address" value="{{ $employee->address }}" name="address">
                                     </div>
 
                                 </div>
                                 <div class="offset-1 col-3">
                                     <div class="form-group">
                                         <label for="surname">Mbiemer</label>
-                                        <input type="text" class="form-control" id="surname" value="{{ $employee->surname }}">
+                                        <input type="text" class="form-control" id="surname" value="{{ $employee->surname }}" name="surname">
                                     </div>
                                     <div class="form-group">
                                         <label for="insurance">Karta Identitetit</label>
-                                        <input type="text" class="form-control" id="insurance" value="{{ $employee->insurance_id }}">
+                                        <input type="text" class="form-control" id="insurance" value="{{ $employee->insurance_id }}" name="insurance">
                                     </div>
                                     <div class="form-group">
                                         <label for="phone">Nr Telefoni</label>
-                                        <input type="text" class="form-control" id="phone" value="{{ $employee->mobile }}">
+                                        <input type="text" class="form-control" id="phone" value="{{ $employee->mobile }}" name="phone">
                                     </div>
                                     <div class="form-group">
                                         <label for="email">Email</label>
-                                        <input type="email" class="form-control" id="email" value="{{ $employee->email }}">
+                                        <input type="email" class="form-control" id="email" value="{{ $employee->email }}" name="email">
                                     </div>
                                 </div>
                                 <div class="offset-1 col-3">
                                     <div class="form-group">
                                         <label for="position">Pozicioni</label>
-                                        <select class="form-control" id="position">
+                                        <select class="form-control" id="position" name="position">
                                             @foreach($positions as $position)
                                                 <option value="{{ $position->id }}" {{ $position->id != $employee->currentMovement->position->id ?: 'selected' }}>{{ $position->description }}</option>
                                             @endforeach
@@ -79,7 +81,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="department">Departamenti</label>
-                                        <select class="form-control" id="department">
+                                        <select class="form-control" id="department" name="department">
                                             @foreach($departments as $department)
                                                 <option value="{{ $department->id }}" {{ $department->id != $employee->currentMovement->department_id ?: 'selected' }}>{{ $department->description }}</option>
                                             @endforeach
@@ -87,7 +89,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button class="btn btn-primary">Save</button>
+                            <button type="submit" class="btn btn-primary">Save</button>
                         </form>
                     </div>
                 </div>

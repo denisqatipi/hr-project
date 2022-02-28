@@ -46,9 +46,14 @@
                                     <td style="width: 20%">{{ $employee->name . ' ' . $employee->surname }}</td>
                                     <td style="width: 20%">{{ $employee->currentMovement->position->description }}</td>
                                     <td style="width: 20%">{{ $employee->currentMovement->department->description }}</td>
-                                    <td style="width: 10%">
+                                    <td style="width: 15%">
                                         <a class="btn btn-dark btn-sm" href="{{ route('show', $employee->id) }}">Shiko</a>
-                                        <button class="btn btn-dark btn-sm">Modifiko</button>
+                                        <a class="btn btn-dark btn-sm" href="{{ route('edit', $employee->id) }}">Modifiko</a>
+                                        <form method="POST" action="/employee/{{$employee->id}}/delete" style="display: inline-block">
+                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                            {{ method_field('delete') }}
+                                            <button class="btn btn-dark btn-sm" href="{{ route('delete', $employee->id) }}">Fshi</button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach

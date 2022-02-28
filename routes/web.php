@@ -18,12 +18,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/employees', 'HomeController@index')->name('index');
-
-Route::get('/employee/{id}/show', 'HomeController@show')->name('show');
-
-Route::get('/employee/add', 'HomeController@add'); //add page
-Route::get('/employee/{id}/edit', 'HomeController@edit'); //edit page
-
-Route::post('/employee/store'); //store employee
-Route::put('/employee/{id}/update'); //store employee
-Route::delete('/employee/{id}/delete'); //delete employee
+Route::get('/employee/{id}/show', 'HomeController@show')->name('show'); //show employee
+Route::get('/employee/add', 'HomeController@add')->name('add'); //add employee
+Route::get('/employee/{id}/edit', 'HomeController@edit')->name('edit'); //edit employee
+Route::post('/employee/store', 'HomeController@store')->name('store'); //store employee
+Route::put('/employee/{id}/update', 'HomeController@update')->name('update'); //update employee
+Route::delete('/employee/{id}/delete', 'HomeController@delete')->name('delete'); //delete employee
