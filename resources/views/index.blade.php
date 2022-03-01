@@ -16,6 +16,8 @@
             <div class="card-header">
                 <h3 class="card-title">PUNONJESIT</h3>
 
+                <a href="{{ route('add') }}" class="btn btn-dark btn-sm float-right">Shto Punonjes</a>
+
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                         <i class="fas fa-minus"></i>
