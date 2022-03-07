@@ -32,6 +32,7 @@
                         <form action="/employee/{{ $employee->id }}/update" method="POST">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             {{ method_field('PUT') }}
+
                             <div class="row">
                                 <div class="col-3">
                                     <div class="form-group">
@@ -89,6 +90,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <button type="submit" class="btn btn-primary">Save</button>
                         </form>
                     </div>

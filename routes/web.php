@@ -26,3 +26,7 @@ Route::put('/employee/{id}/update', 'HomeController@update')->name('update'); //
 Route::delete('/employee/{id}/delete', 'HomeController@delete')->name('delete'); //delete employee
 
 Route::post('/employee-movement/store', 'EmployeeMovementController@store')->name('store-movement');
+
+Route::get('/timesheet', 'TimesheetController@index')->name('timesheet.index');
+Route::post('/timesheet/store', 'TimesheetController@store')->name('timesheet.store');
+Route::post('/timesheet/search', 'TimesheetController@search')->name('timesheet.search');

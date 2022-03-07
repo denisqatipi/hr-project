@@ -11,9 +11,8 @@ class CreateTimesheetTable extends Migration
         Schema::create('timesheet', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->date('date');
-
-            //
-
+            $table->unsignedBigInteger('supervisor');
+            $table->string('notes');
             $table->timestamps();
         });
     }

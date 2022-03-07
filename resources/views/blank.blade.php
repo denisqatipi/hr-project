@@ -110,48 +110,59 @@
           </div>
         </div>
         <div class="card-body">
+
           <div class="row">
-            <div class="col-12">
-              <p>{{ $employee->name . ' ' . $employee->surname }}</p>
+            <div class="col-3">
+              <div class="form-group">
+                <label for="name">Emri</label>
+                <p>{{ $employee->name }}</p>
+              </div>
+              <div class="form-group">
+                <label for="gender">Gjinia</label>
+                <p>{{ $employee->gender }}</p>
+              </div>
+              <div class="form-group">
+                <label for="birthday">Datelindja</label>
+                <p>{{ $employee->birthdate }}</p>
+              </div>
+              <div class="form-group">
+                <label for="address">Adresa</label>
+                <p>{{ $employee->address }}</p>
+              </div>
+
+            </div>
+            <div class="offset-1 col-3">
+              <div class="form-group">
+                <label for="surname">Mbiemer</label>
+                <p>{{ $employee->surname }}</p>
+              </div>
+              <div class="form-group">
+                <label for="insurance">Karta Identitetit</label>
+                <p>{{ $employee->insurance_id }}</p>
+              </div>
+              <div class="form-group">
+                <label for="phone">Nr Telefoni</label>
+                <p>{{ $employee->mobile }}</p>
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <p>{{ $employee->email }}</p>
+              </div>
+            </div>
+            <div class="offset-1 col-3">
+              <div class="form-group">
+                <label for="position">Pozicioni</label>
+                <p>{{ $employee->currentMovement ? $employee->currentMovement->position->description : '' }}</p>
+              </div>
+              <div class="form-group">
+                <label for="department">Departamenti</label>
+                <p>{{ $employee->currentMovement ? $employee->currentMovement->department->description : '' }}</p>
+              </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-1">
-              <p>Aktiv</p>
-              <p class="mb-2">Emri</p>
-              <p class="mb-2">Mbiemer</p>
-              <p class="mb-2">Gjinia</p>
-              <p class="mb-2">K Identitetit</p>
-              <p class="mb-2">Datelindja</p>
-            </div>
-            <div class="col-2">
-              <input type="checkbox" checked>
-              <table class="table table-bordered table-sm">
-                <tbody>
-                  <tr><td>{{ $employee->name }}</td></tr>
-                  <tr><td>{{ $employee->surname }}</td></tr>
-                  <tr><td>{{ $employee->gender }}</td></tr>
-                  <tr><td>{{ $employee->insurance_id }}</td></tr>
-                  <tr><td>{{ $employee->birthdate }}</td></tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="offset-1 col-1 mt-4">
-              <p class="mb-4">Nr Telefoni</p>
-              <p class="mb-4">Email</p>
-              <p class="mb-4">Adresa</p>
-            </div>
-            <div class="col-2 mt-4">
-              <table class="table table-bordered table-sm">
-                <tbody>
-                  <tr><td>{{ $employee->mobile }}</td></tr>
-                  <tr><td>{{ $employee->email }}</td></tr>
-                  <tr><td>{{ $employee->address }}</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
+
           <hr/>
+
           <div class="row mt-3">
             <div class="col-8">
             <p>Pozicioni</p>
@@ -183,6 +194,7 @@
               </table>
             </div>
           </div>
+
         </div>
         <!-- /.card-body -->
       </div>
